@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>문구 구매 사이트</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div>
+        <h1>문구 구매 사이트</h1>
+        <p>PostgreSQL 트랜잭션으로 재고를 관리하는 간단한 쇼핑몰</p>
+      </div>
+      <div class="account">
+        <span id="currentUser">로그인이 필요합니다.</span>
+        <button id="logoutButton" type="button" hidden>로그아웃</button>
+        <button id="checkoutButton" type="button">주문하기</button>
+      </div>
+    </header>
+
+    <section id="authPanel" class="login-panel">
+      <form id="loginForm">
+        <h2>로그인</h2>
+        <input name="email" type="email" placeholder="이메일" value="user@example.com" required />
+        <input name="password" type="password" placeholder="비밀번호" value="user1234" required />
+        <button type="submit">로그인</button>
+      </form>
+
+      <form id="signupForm">
+        <h2>회원가입</h2>
+        <input name="name" placeholder="이름" required />
+        <input name="email" type="email" placeholder="이메일" required />
+        <input name="password" type="password" placeholder="비밀번호 6자 이상" required />
+        <button type="submit">가입</button>
+      </form>
+
+      <div class="demo-accounts">
+        <strong>테스트 계정</strong>
+        <span>사용자: user@example.com / user1234</span>
+        <span>사용자: kim@example.com / kim1234</span>
+        <span>관리자: admin@example.com / admin1234</span>
+      </div>
+    </section>
+
+    <main class="layout">
+      <section>
+        <div class="section-title">
+          <h2>상품 목록</h2>
+          <span id="roleLabel">GUEST</span>
+        </div>
+        <div id="products" class="product-grid"></div>
+      </section>
+
+      <aside class="side-panel">
+        <section>
+          <h2>장바구니</h2>
+          <div id="cart" class="list"></div>
+          <strong id="cartTotal">0원</strong>
+        </section>
+
+        <section>
+          <h2>주문 내역</h2>
+          <div id="orders" class="list"></div>
+        </section>
+      </aside>
+    </main>
+
+    <section id="adminPanel" class="admin" hidden>
+      <h2>관리자 상품 등록</h2>
+      <form id="productForm">
+        <input name="name" placeholder="상품명" required />
+        <input name="description" placeholder="설명" required />
+        <input name="price" type="number" min="0" placeholder="가격" required />
+        <input name="stock" type="number" min="0" placeholder="재고" required />
+        <button type="submit">등록</button>
+      </form>
+    </section>
+
+    <div id="toast" class="toast"></div>
+    <script src="/app.js"></script>
+  </body>
+</html>
