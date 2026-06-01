@@ -120,25 +120,3 @@ order_items
 ```
 
 사용자는 가입 직후 바로 자신의 장바구니를 사용할 수 있습니다.
-
-## 실행 방법
-
-현재 프로젝트는 Windows 환경에서 portable Node.js와 Docker PostgreSQL로 실행할 수 있습니다.
-
-```powershell
-copy .env.example .env
-docker start db-assignment-postgres
-docker cp sql/schema.sql db-assignment-postgres:/tmp/schema.sql
-docker cp sql/seed.sql db-assignment-postgres:/tmp/seed.sql
-docker exec db-assignment-postgres psql -U postgres -d db_assignment_shop -f /tmp/schema.sql -f /tmp/seed.sql
-tools\node\npm.cmd start
-```
-
-브라우저에서 `http://localhost:3000`으로 접속합니다.
-
-Node.js가 전역 설치된 환경이라면 다음 명령도 사용할 수 있습니다.
-
-```bash
-npm install
-npm start
-```
